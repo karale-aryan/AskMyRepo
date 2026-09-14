@@ -34,7 +34,18 @@ export function useCurrentUser() {
     })
 }
 
-export function logout() {
+export function useLogout() {
+    const router = useRouter();
+    const queryClient = useQueryClient();
 
-
+    return useMutation({
+        mutationFn: async () => {
+            await api.logout();
+            setAuthCookies(false);
+        },
+        onSuccess: () => {
+            queryClient.clear();
+            router.push("/login");
+        },
+    });
 }
