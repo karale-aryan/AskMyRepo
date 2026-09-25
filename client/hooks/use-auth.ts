@@ -11,7 +11,7 @@ export const AUTH_COOKIES = "devpilot-auth";
 export function setAuthCookies(authed: boolean) {
     if (typeof document === "undefined") return;
     if (authed) {
-        document.cookie = `${AUTH_COOKIES}=1; path=/; max-age={60 * 60 * 24 * 7}; samesite=lax`;
+        document.cookie = `${AUTH_COOKIES}=1; path=/; max-age=${60 * 60 * 24 * 7}; samesite=lax`;
     } else {
         document.cookie = `${AUTH_COOKIES}=; path=/; max-age=0; samesite=lax`;
     }
