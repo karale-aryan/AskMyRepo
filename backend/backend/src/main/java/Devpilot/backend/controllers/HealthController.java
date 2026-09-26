@@ -16,9 +16,9 @@ public class HealthController {
 
     /**
      * Primary health check endpoint for UptimeRobot, Render, and external monitors.
-     * Accessible at /api/health and /health without authentication.
+     * Accessible at /, /health, and /api/health without authentication.
      */
-    @GetMapping({"/health", "/api/health"})
+    @GetMapping({"/", "/health", "/api/health"})
     public ResponseEntity<Map<String, Object>> getHealth() {
         Map<String, Object> response = new HashMap<>();
         response.put("status", "UP");
