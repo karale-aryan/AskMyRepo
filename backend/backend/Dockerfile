@@ -11,7 +11,9 @@ WORKDIR /workspace
 # Copy maven wrapper and project definition first (for layer caching)
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
-RUN chmod +x mvnw
+
+# Fix Windows line endings on mvnw and make executable
+RUN sed -i 's/\r$//' mvnw && chmod +x mvnw
 
 # Download dependencies (offline dependency cache layer)
 RUN ./mvnw dependency:go-offline -B || true
