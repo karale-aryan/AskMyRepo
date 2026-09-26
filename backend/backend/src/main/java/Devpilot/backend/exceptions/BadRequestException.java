@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import lombok.Getter;
 
 @ResponseStatus(HttpStatus.BAD_REQUEST)
+@Getter
 public class BadRequestException extends RuntimeException {
-    @Getter
     private final String field;
 
     public BadRequestException(String message) {
@@ -17,4 +17,8 @@ public class BadRequestException extends RuntimeException {
         super(message);
         this.field = field;
     }
-}
+
+    public String getField() {
+        return field;
+    }
+}

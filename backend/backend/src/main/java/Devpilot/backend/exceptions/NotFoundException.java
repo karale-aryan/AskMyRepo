@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import lombok.Getter;
 
 @ResponseStatus(HttpStatus.NOT_FOUND)
+@Getter
 public class NotFoundException extends RuntimeException {
-    @Getter
     private final String field;
 
     public NotFoundException(String message) {
@@ -16,5 +16,9 @@ public class NotFoundException extends RuntimeException {
     public NotFoundException(String message, String field) {
         super(message);
         this.field = field;
+    }
+
+    public String getField() {
+        return field;
     }
 }

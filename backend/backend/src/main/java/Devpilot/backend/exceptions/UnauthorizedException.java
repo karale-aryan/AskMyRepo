@@ -5,8 +5,8 @@ import org.springframework.http.HttpStatus;
 import lombok.Getter;
 
 @ResponseStatus(HttpStatus.UNAUTHORIZED)
+@Getter
 public class UnauthorizedException extends RuntimeException {
-    @Getter
     private final String field;
 
     public UnauthorizedException(String message) {
@@ -16,5 +16,9 @@ public class UnauthorizedException extends RuntimeException {
     public UnauthorizedException(String message, String field) {
         super(message);
         this.field = field;
+    }
+
+    public String getField() {
+        return field;
     }
 }
