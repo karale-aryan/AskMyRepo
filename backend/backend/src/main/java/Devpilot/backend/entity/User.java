@@ -56,4 +56,25 @@ public class User {
       createdAt = Instant.now();
     }
   }
+
+  // Explicit Getters
+  public UUID getId() { return id; }
+  public long getGithubId() { return githubId; }
+  public String getGithubUsername() { return githubUsername; }
+  public String getDisplayName() { return displayName; }
+  public String getAvatarUrl() { return avatarUrl; }
+  public String getAccessToken() { return accessToken; }
+  public String getTokenScopes() { return tokenScopes; }
+  public Instant getCreatedAt() { return createdAt; }
+
+  // Explicit Setters
+  public void setId(UUID id) { this.id = id; }
+  public void setGithubId(long githubId) { this.githubId = githubId; }
+  public void setGithubUsername(String githubUsername) { this.githubUsername = githubUsername; }
+  public void setDisplayName(String displayName) { this.displayName = displayName; }
+  public void setAvatarUrl(String avatarUrl) { this.avatarUrl = avatarUrl; }
+  public void setAccessToken(String accessToken) { this.accessToken = accessToken; }
+  public void setTokenScopes(String tokenScopes) { this.tokenScopes = tokenScopes; }
+  public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
 }
+

@@ -58,4 +58,21 @@ public class ChatSession {
     void onUpdate() {
         this.updatedAt = Instant.now();
     }
+
+    // Explicit Getters
+    public UUID getId() { return id; }
+    public UUID getUserId() { return userId; }
+    public UUID getRepositoryId() { return repositoryId; }
+    public String getTitle() { return title; }
+    public Instant getCreatedAt() { return createdAt; }
+    public Instant getUpdatedAt() { return updatedAt; }
+
+    // Explicit Setters
+    public void setId(UUID id) { this.id = id; }
+    public void setUserId(UUID userId) { this.userId = userId; }
+    public void setRepositoryId(UUID repositoryId) { this.repositoryId = repositoryId; }
+    public void setTitle(String title) { this.title = title; }
+    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
+    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
 }
+

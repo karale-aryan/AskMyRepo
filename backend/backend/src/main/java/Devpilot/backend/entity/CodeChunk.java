@@ -53,4 +53,23 @@ public class CodeChunk {
             this.createdAt = Instant.now();
         }
     }
+
+    // Explicit Getters
+    public UUID getId() { return id; }
+    public UUID getRepositoryId() { return repositoryId; }
+    public String getFilePath() { return filePath; }
+    public int getChunkIndex() { return chunkIndex; }
+    public String getContent() { return content; }
+    public String getEmbedding() { return embedding; }
+    public Instant getCreatedAt() { return createdAt; }
+
+    // Explicit Setters
+    public void setId(UUID id) { this.id = id; }
+    public void setRepositoryId(UUID repositoryId) { this.repositoryId = repositoryId; }
+    public void setFilePath(String filePath) { this.filePath = filePath; }
+    public void setChunkIndex(int chunkIndex) { this.chunkIndex = chunkIndex; }
+    public void setContent(String content) { this.content = content; }
+    public void setEmbedding(String embedding) { this.embedding = embedding; }
+    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
 }
+

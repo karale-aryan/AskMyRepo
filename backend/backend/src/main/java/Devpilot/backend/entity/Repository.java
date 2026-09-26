@@ -107,4 +107,46 @@ public class Repository {
     protected void onUpdate() {
         this.updatedAt = Instant.now();
     }
+
+    // Explicit Getters
+    public UUID getId() { return id; }
+    public UUID getUserId() { return userId; }
+    public Long getGithubUrlId() { return githubUrlId; }
+    public String getOwner() { return owner; }
+    public String getName() { return name; }
+    public boolean isPrivate() { return isPrivate; }
+    public String getFullName() { return fullName; }
+    public String getDefaultBranch() { return defaultBranch; }
+    public String getDescription() { return description; }
+    public String getHtmlUrl() { return htmlUrl; }
+    public String getLanguage() { return language; }
+    public IndexStatus getIndexStatus() { return indexStatus; }
+    public Instant getIndexedAt() { return indexedAt; }
+    public int getChunkCount() { return chunkCount; }
+    public int getFilesTotal() { return filesTotal; }
+    public int getFilesProcessed() { return filesProcessed; }
+    public String getErrorMessage() { return errorMessage; }
+    public Instant getCreatedAt() { return createdAt; }
+    public Instant getUpdatedAt() { return updatedAt; }
+
+    // Explicit Setters
+    public void setId(UUID id) { this.id = id; }
+    public void setUserId(UUID userId) { this.userId = userId; }
+    public void setGithubUrlId(Long githubUrlId) { this.githubUrlId = githubUrlId; }
+    public void setOwner(String owner) { this.owner = owner; }
+    public void setName(String name) { this.name = name; }
+    public void setPrivate(boolean aPrivate) { isPrivate = aPrivate; }
+    public void setFullName(String fullName) { this.fullName = fullName; }
+    public void setDefaultBranch(String defaultBranch) { this.defaultBranch = defaultBranch; }
+    public void setDescription(String description) { this.description = description; }
+    public void setHtmlUrl(String htmlUrl) { this.htmlUrl = htmlUrl; }
+    public void setLanguage(String language) { this.language = language; }
+    public void setIndexStatus(IndexStatus indexStatus) { this.indexStatus = indexStatus; }
+    public void setIndexedAt(Instant indexedAt) { this.indexedAt = indexedAt; }
+    public void setChunkCount(int chunkCount) { this.chunkCount = chunkCount; }
+    public void setFilesTotal(int filesTotal) { this.filesTotal = filesTotal; }
+    public void setFilesProcessed(int filesProcessed) { this.filesProcessed = filesProcessed; }
+    public void setErrorMessage(String errorMessage) { this.errorMessage = errorMessage; }
+    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
+    public void setUpdatedAt(Instant updatedAt) { this.updatedAt = updatedAt; }
 }

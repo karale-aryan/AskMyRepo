@@ -47,4 +47,19 @@ public class ChatMessage {
             this.createdAt = Instant.now();
         }
     }
+
+    // Explicit Getters
+    public UUID getId() { return id; }
+    public UUID getSessionId() { return sessionId; }
+    public String getRole() { return role; }
+    public String getContent() { return content; }
+    public Instant getCreatedAt() { return createdAt; }
+
+    // Explicit Setters
+    public void setId(UUID id) { this.id = id; }
+    public void setSessionId(UUID sessionId) { this.sessionId = sessionId; }
+    public void setRole(String role) { this.role = role; }
+    public void setContent(String content) { this.content = content; }
+    public void setCreatedAt(Instant createdAt) { this.createdAt = createdAt; }
 }
+
