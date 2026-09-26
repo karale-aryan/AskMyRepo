@@ -1,0 +1,7 @@
+.git/
+.gitignore
+.vscode/
+client/
+node_modules/
+target/
+*.log

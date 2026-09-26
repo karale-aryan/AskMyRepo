@@ -1,0 +1,47 @@
+services:
+  - type: web
+    name: devpilot-backend
+    runtime: docker
+    dockerfilePath: backend/backend/Dockerfile
+    dockerContext: backend/backend
+    plan: free
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: 8080
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: devpilot-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: devpilot-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: devpilot-db
+          property: password
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GITHUB_CLIENT_ID
+        sync: false
+      - key: GITHUB_CLIENT_SECRET
+        sync: false
+      - key: FRONTEND_URL
+        value: https://your-frontend-domain.com
+      - key: CORS_ALLOWED_ORIGINS
+        value: https://your-frontend-domain.com
+      - key: TOKEN_ENCRYPTOR_PASSWORD
+        generateValue: true
+      - key: TOKEN_ENCRYPTOR_SALT
+        generateValue: true
+      - key: COOKIE_SECURE
+        value: "true"
+      - key: COOKIE_SAME_SITE
+        value: "none"
+
+databases:
+  - name: devpilot-db
+    plan: free
+    databaseName: DEVPILOT
+    user: postgres
