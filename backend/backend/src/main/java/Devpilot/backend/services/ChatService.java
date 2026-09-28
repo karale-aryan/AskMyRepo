@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
-import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -30,9 +29,22 @@ public class ChatService {
     private final CodeChunkRepository codeChunkRepository;
     private final RepositoryRepository repositoryRepository;
     private final IndexingService indexingService;
-    private final ChatClient chatClient;
+    private final AiChatService aiChatService;
 
     private static final int MAX_CONTEXT_CHUNKS = 5;
+
+    private static final String SYSTEM_PROMPT = """
+            You are DevPilot AI, an expert code assistant embedded in the AskMyRepo platform.
+            Your job is to help developers understand and navigate code repositories by answering
+            questions using the indexed source code provided as context.
+
+            ## Instructions:
+            - Start with a clear, direct answer to the user's question.
+            - If relevant code context is provided, cite file paths and explain how components connect.
+            - If the repository has 0 chunks or no code is indexed yet, explain what you know from the repository metadata and advise indexing the repo.
+            - Format answers using clean Markdown with code blocks and bullet points.
+            """;
+
 
     @Transactional
     public ChatSession getOrCreateSession(UUID userId, UUID repositoryId) {
@@ -137,17 +149,14 @@ public class ChatService {
         // Call AI
         String aiResponse;
         try {
-            aiResponse = chatClient.prompt()
-                    .user(promptBuilder.toString())
-                    .call()
-                    .content();
+            aiResponse = aiChatService.chat(SYSTEM_PROMPT, promptBuilder.toString());
 
             if (aiResponse == null || aiResponse.isBlank()) {
-                aiResponse = "I received an empty response. Please try asking again.";
+                aiResponse = "I received an empty response from the AI model. Please try asking again.";
             }
         } catch (Exception e) {
             log.error("AI call failed: {}", e.getMessage(), e);
-            aiResponse = "I'm sorry, I encountered an error while processing your question. Please try again.";
+            aiResponse = "I encountered an error communicating with the AI service (" + e.getMessage() + "). Please check your OpenRouter API key and try again.";
         }
 
         // Save assistant message
