@@ -26,7 +26,7 @@ public class GeminiEmbeddingService {
     private final String model;
 
     public GeminiEmbeddingService(
-            @Value("${spring.ai.openai.api-key}") String apiKey,
+            @Value("${app.gemini.api-key:${GEMINI_API_KEY:${spring.ai.openai.api-key}}}") String apiKey,
             @Value("${app.embedding.model:text-embedding-004}") String model) {
         this.apiKey = apiKey;
         this.model = model;
