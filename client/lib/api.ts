@@ -70,7 +70,7 @@ export function getApiBaseUrl() {
     return (
         process.env.NEXT_PUBLIC_API_BASE_URL ||
         process.env.NEXT_PUBLIC_API_URL ||
-        "https://askmyrepo-gp6p.onrender.com"
+        "https://askmyrepo-1-jf80.onrender.com"
     );
 }
 
